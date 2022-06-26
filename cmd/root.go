@@ -218,7 +218,7 @@ func handleSelectArticle(ctx context.Context, index int) {
 	}
 	a := currentProduct.Articles[index-1]
 
-	projectDir, err := mkDownloadProjectDir(downloadFolder, phone, gcid, currentProduct.Title)
+	projectDir, err := mkDownloadProjectDir(downloadFolder, gcid, currentProduct.Title)
 	checkError(err)
 	downloadArticle(ctx, a, projectDir)
 	fmt.Printf("\r%s 下载完成", a.Title)
@@ -228,7 +228,7 @@ func handleSelectArticle(ctx context.Context, index int) {
 
 func handleDownloadAll(ctx context.Context) {
 	loadArticles()
-	projectDir, err := mkDownloadProjectDir(downloadFolder, phone, gcid, currentProduct.Title)
+	projectDir, err := mkDownloadProjectDir(downloadFolder, gcid, currentProduct.Title)
 	checkError(err)
 	downloaded, err := findDownloadedArticleFileNames(projectDir)
 	checkError(err)
@@ -302,7 +302,7 @@ func handleDownloadAll(ctx context.Context) {
 			}
 
 			checkError(err)
-	
+
 			increasePDFCount(total, &i)
 			r := rand.Intn(2000)
 			time.Sleep(time.Duration(r) * time.Millisecond)
@@ -458,12 +458,8 @@ func findDownloadedArticleFileNames(projectDir string) (map[string]struct{}, err
 	return res, nil
 }
 
-func mkDownloadProjectDir(downloadFolder, phone, gcid, projectName string) (string, error) {
-	userName := phone
-	if gcid != "" {
-		userName = gcid
-	}
-	path := filepath.Join(downloadFolder, userName, filenamify.Filenamify(projectName))
+func mkDownloadProjectDir(downloadFolder, gcid, projectName string) (string, error) {
+	path := filepath.Join(downloadFolder, filenamify.Filenamify(projectName))
 	err := os.MkdirAll(path, os.ModePerm)
 	if err != nil {
 		return "", err
