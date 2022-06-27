@@ -41,6 +41,7 @@ var (
 	quality          string
 	downloadComments bool
 	columnOutputType int
+	courseId         int
 )
 
 func init() {
@@ -55,6 +56,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&quality, "quality", "q", "sd", "下载视频清晰度(ld标清,sd高清,hd超清)")
 	rootCmd.Flags().BoolVar(&downloadComments, "comments", true, "是否需要专栏的第一页评论")
 	rootCmd.Flags().IntVar(&columnOutputType, "output", 1, "专栏的输出内容(1pdf,2markdown,4audio)可自由组合")
+	rootCmd.Flags().IntVar(&courseId, "id", 0, "课程id")
 
 	rootCmd.MarkFlagsMutuallyExclusive("phone", "gcid")
 	rootCmd.MarkFlagsMutuallyExclusive("phone", "gcess")
@@ -117,71 +119,73 @@ var rootCmd = &cobra.Command{
 		}
 
 		selectProduct(cmd.Context())
+
 	},
 }
 
 func selectProduct(ctx context.Context) {
-	prompt := promptui.Prompt{
-		Label: "请输入课程 ID",
-		Validate: func(s string) error {
-			if strings.TrimSpace(s) == "" {
-				return errors.New("课程 ID 不能为空")
-			}
-			if _, err := strconv.Atoi(s); err != nil {
-				return errors.New("课程 ID 格式不合法")
-			}
-			return nil
-		},
-		HideEntered: true,
-	}
-	s, err := prompt.Run()
-	checkError(err)
+	//prompt := promptui.Prompt{
+	//	Label: "请输入课程 ID",
+	//	Validate: func(s string) error {
+	//		if strings.TrimSpace(s) == "" {
+	//			return errors.New("课程 ID 不能为空")
+	//		}
+	//		if _, err := strconv.Atoi(s); err != nil {
+	//			return errors.New("课程 ID 格式不合法")
+	//		}
+	//		return nil
+	//	},
+	//	HideEntered: true,
+	//}
+	//s, err := prompt.Run()
+	//checkError(err)
 
 	// ignore, because checked before
-	id, _ := strconv.Atoi(s)
-	loadProduct(ctx, id)
+	//id, _ := strconv.Atoi(s)
+	loadProduct(ctx, courseId)
 
 	productOps(ctx)
 }
 
 func productOps(ctx context.Context) {
-	type option struct {
-		Text  string
-		Value int
-	}
-	options := make([]option, 3)
-	options[0] = option{"返回上一级", 0}
-	if isColumn() {
-		options[1] = option{"下载当前专栏所有文章", 1}
-		options[2] = option{"选择文章", 2}
-	} else if isVideo() {
-		options[1] = option{"下载当前视频课所有视频", 1}
-		options[2] = option{"选择视频", 2}
-	}
-	templates := &promptui.SelectTemplates{
-		Label:    "{{ . }}",
-		Active:   "{{ `>` | red }} {{ .Text | red }}",
-		Inactive: "{{if eq .Value 0}} {{ .Text | green }} {{else}} {{ .Text }} {{end}}",
-	}
-	prompt := promptui.Select{
-		Label:        fmt.Sprintf("当前选中的专栏为: %s, 请继续选择：", currentProduct.Title),
-		Items:        options,
-		Templates:    templates,
-		Size:         len(options),
-		HideSelected: true,
-		Stdout:       NoBellStdout,
-	}
-	index, _, err := prompt.Run()
-	checkError(err)
+	handleDownloadAll(ctx)
+	//type option struct {
+	//	Text  string
+	//	Value int
+	//}
+	//options := make([]option, 3)
+	//options[0] = option{"返回上一级", 0}
+	//if isColumn() {
+	//	options[1] = option{"下载当前专栏所有文章", 1}
+	//	options[2] = option{"选择文章", 2}
+	//} else if isVideo() {
+	//	options[1] = option{"下载当前视频课所有视频", 1}
+	//	options[2] = option{"选择视频", 2}
+	//}
+	//templates := &promptui.SelectTemplates{
+	//	Label:    "{{ . }}",
+	//	Active:   "{{ `>` | red }} {{ .Text | red }}",
+	//	Inactive: "{{if eq .Value 0}} {{ .Text | green }} {{else}} {{ .Text }} {{end}}",
+	//}
+	//prompt := promptui.Select{
+	//	Label:        fmt.Sprintf("当前选中的专栏为: %s, 请继续选择：", currentProduct.Title),
+	//	Items:        options,
+	//	Templates:    templates,
+	//	Size:         len(options),
+	//	HideSelected: true,
+	//	Stdout:       NoBellStdout,
+	//}
+	//index, _, err := prompt.Run()
+	//checkError(err)
 
-	switch index {
-	case 0:
-		selectProduct(ctx)
-	case 1:
-		handleDownloadAll(ctx)
-	case 2:
-		selectArticle(ctx)
-	}
+	//switch index {
+	////case 0:
+	////	selectProduct(ctx)
+	//case 1:
+	//	handleDownloadAll(ctx)
+	//	//case 2:
+	//	//	selectArticle(ctx)
+	//}
 }
 
 func selectArticle(ctx context.Context) {
