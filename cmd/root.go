@@ -32,6 +32,7 @@ import (
 
 var (
 	phone            string
+	pwd              string
 	gcid             string
 	gcess            string
 	concurrency      int
@@ -50,6 +51,7 @@ func init() {
 	defaultDownloadFolder := filepath.Join(userHomeDir, config.GeektimeDownloaderFolder)
 
 	rootCmd.Flags().StringVarP(&phone, "phone", "u", "", "你的极客时间账号(手机号)")
+	rootCmd.Flags().StringVarP(&pwd, "password", "p", "", "你的极客时间密码")
 	rootCmd.Flags().StringVar(&gcid, "gcid", "", "极客时间 cookie 值 gcid")
 	rootCmd.Flags().StringVar(&gcess, "gcess", "", "极客时间 cookie 值 gcess")
 	rootCmd.Flags().StringVarP(&downloadFolder, "folder", "f", defaultDownloadFolder, "专栏和视频课的下载目标位置")
