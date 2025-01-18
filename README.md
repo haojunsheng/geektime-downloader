@@ -53,6 +53,10 @@ See [release page](https://github.com/nicoxiang/geektime-downloader/releases)
 > geektime-downloader.exe --gcid "gcid" --gcess "gcess"
 ```
 
+```
+./geektime-downloader --gcid "1046e15-314a477-4e2b98a-e8b1359"  --gcess "BgoEAAAAAAMEjHSGZwUEAAAAAAEIl_UeAAAAAAAEBACNJwAMAQEHBF.AP1kJAQEGBKJ1drIIAQMCBIx0hmcLAgYADQEB"   --output 3
+```
+
 ### Help
 
 ```bash
