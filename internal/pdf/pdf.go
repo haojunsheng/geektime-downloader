@@ -1,7 +1,9 @@
 package pdf
 
 import (
+	"bufio"
 	"context"
+	"github.com/nicoxiang/geektime-downloader/internal/pkg/logger"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -14,62 +16,70 @@ import (
 	"github.com/chromedp/cdproto/runtime"
 	"github.com/chromedp/chromedp"
 	"github.com/chromedp/chromedp/device"
+	"github.com/nicoxiang/geektime-downloader/internal/geektime"
 	"github.com/nicoxiang/geektime-downloader/internal/pkg/filenamify"
-	pgt "github.com/nicoxiang/geektime-downloader/internal/pkg/geektime"
+	"github.com/nicoxiang/geektime-downloader/internal/pkg/files"
 )
 
 // PDFExtension ...
 const PDFExtension = ".pdf"
 
 // PrintArticlePageToPDF use chromedp to print article page and save
-func PrintArticlePageToPDF(ctx context.Context, aid int, dir, title string, cookies []*http.Cookie, downloadComments bool) error {
+func PrintArticlePageToPDF(ctx context.Context,
+	aid int,
+	dir,
+	title string,
+	cookies []*http.Cookie,
+	downloadComments bool,
+	printPDFWaitSeconds int,
+	printPDFTimeoutSeconds int,
+	overwrite bool,
+) (bool, error) {
 	rateLimit := false
+
+	fileName := filepath.Join(dir, filenamify.Filenamify(title)+PDFExtension)
+
+	if files.CheckFileExists(fileName) && !overwrite {
+		return true, nil
+	}
+
 	// new tab
 	ctx, cancel := chromedp.NewContext(ctx)
 	defer cancel()
 
-	ctx, cancel = context.WithTimeout(ctx, time.Minute)
+	ctx, cancel = context.WithTimeout(ctx, time.Duration(printPDFTimeoutSeconds)*time.Second)
 	defer cancel()
 
 	chromedp.ListenTarget(ctx, func(ev interface{}) {
 		switch responseReceivedEvent := ev.(type) {
 		case *network.EventResponseReceived:
 			response := responseReceivedEvent.Response
-			if response.URL == pgt.GeekBang+"/serv/v1/article" && response.Status == 451 {
+			if response.URL == geektime.DefaultBaseURL+"/serv/v1/article" && response.Status == 451 {
 				rateLimit = true
 				cancel()
 			}
 		}
 	})
 
-	var buf []byte
 	err := chromedp.Run(ctx,
 		chromedp.Tasks{
 			chromedp.Emulate(device.IPadPro11),
 			setCookies(cookies),
-			chromedp.Navigate(pgt.GeekBang + `/column/article/` + strconv.Itoa(aid)),
-			// wait for loading show
-			chromedp.WaitVisible("._loading_wrap_", chromedp.ByQuery),
-			// wait for loading disappear
-			chromedp.WaitNotPresent("._loading_wrap_", chromedp.ByQuery),
-			waitForImagesLoad(),
+			chromedp.Navigate(geektime.DefaultBaseURL + `/column/article/` + strconv.Itoa(aid)),
+			chromedp.Sleep(time.Duration(printPDFWaitSeconds) * time.Second),
 			hideRedundantElements(downloadComments),
-			printToPDF(&buf),
+			printToPDF(fileName),
 		},
 	)
 
 	if err != nil {
 		if rateLimit {
-			return pgt.ErrGeekTimeRateLimit
+			return false, geektime.ErrGeekTimeRateLimit
 		}
-		return err
+		return false, err
 	}
 
-	fileName := filepath.Join(dir, filenamify.Filenamify(title)+PDFExtension)
-	if err := os.WriteFile(fileName, buf, 0666); err != nil {
-		return err
-	}
-	return nil
+	return false, nil
 }
 
 func setCookies(cookies []*http.Cookie) chromedp.ActionFunc {
@@ -77,7 +87,7 @@ func setCookies(cookies []*http.Cookie) chromedp.ActionFunc {
 		expr := cdp.TimeSinceEpoch(time.Now().Add(180 * 24 * time.Hour))
 
 		for _, c := range cookies {
-			err := network.SetCookie(c.Name, c.Value).WithExpires(&expr).WithDomain(pgt.GeekBangCookieDomain).WithHTTPOnly(true).Do(ctx)
+			err := network.SetCookie(c.Name, c.Value).WithExpires(&expr).WithDomain(geektime.GeekBangCookieDomain).WithHTTPOnly(true).Do(ctx)
 			if err != nil {
 				return err
 			}
@@ -90,6 +100,14 @@ func hideRedundantElements(downloadComments bool) chromedp.ActionFunc {
 	return chromedp.ActionFunc(func(ctx context.Context) error {
 		s :=
 			`
+			var headMain = document.getElementsByClassName('main')[0];
+   			if(headMain){
+      				headMain.style.display="none";
+			}
+   			var bottomWrapper = document.getElementsByClassName('sub-bottom-wrapper')[0];
+   			if(bottomWrapper){
+      				bottomWrapper.style.display="none";
+			}
 			var openAppdiv = document.getElementsByClassName('openApp')[0];
 			if(openAppdiv){
 				openAppdiv.parentNode.parentNode.parentNode.style.display="none";
@@ -160,55 +178,45 @@ func hideRedundantElements(downloadComments bool) chromedp.ActionFunc {
 	})
 }
 
-func printToPDF(res *[]byte) chromedp.ActionFunc {
+func printToPDF(fileName string) chromedp.ActionFunc {
 	return chromedp.ActionFunc(func(ctx context.Context) error {
-		data, _, err := page.PrintToPDF().
+		_, stream, err := page.PrintToPDF().
 			WithMarginTop(0.4).
 			WithMarginBottom(0.4).
 			WithMarginLeft(0.4).
 			WithMarginRight(0.4).
+			WithTransferMode(page.PrintToPDFTransferModeReturnAsStream).
 			Do(ctx)
 		if err != nil {
 			return err
 		}
-		*res = data
-		return nil
-	})
-}
 
-func waitForImagesLoad() chromedp.ActionFunc {
-	return chromedp.ActionFunc(func(ctx context.Context) error {
-		return waitFor(ctx, "networkIdle")
-	})
-}
-
-// waitFor blocks until eventName is received.
-// Examples of events you can wait for:
-//     init, DOMContentLoaded, firstPaint,
-//     firstContentfulPaint, firstImagePaint,
-//     firstMeaningfulPaintCandidate,
-//     load, networkAlmostIdle, firstMeaningfulPaint, networkIdle
-//
-// This is not super reliable, I've already found incidental cases where
-// networkIdle was sent before load. It's probably smart to see how
-// puppeteer implements this exactly.
-func waitFor(ctx context.Context, eventName string) error {
-	ch := make(chan struct{})
-	cctx, cancel := context.WithCancel(ctx)
-	chromedp.ListenTarget(cctx, func(ev interface{}) {
-		switch e := ev.(type) {
-		case *page.EventLifecycleEvent:
-			if e.Name == eventName {
-				cancel()
-				close(ch)
-			}
+		reader := &streamReader{
+			ctx:    ctx,
+			handle: stream,
+			r:      nil,
+			pos:    0,
+			eof:    false,
 		}
-	})
 
-	select {
-	case <-ch:
+		defer func() {
+			_ = reader.Close()
+		}()
+
+		file, _ := os.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0666)
+
+		defer func() {
+			_ = file.Close()
+		}()
+
+		buffer := bufio.NewReader(reader)
+
+		_, err = buffer.WriteTo(file)
+		if err != nil {
+			logger.Error(err, "write result to output path")
+			return err
+		}
+
 		return nil
-	case <-ctx.Done():
-		return ctx.Err()
-	}
+	})
 }

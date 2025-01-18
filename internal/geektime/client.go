@@ -1,329 +1,136 @@
 package geektime
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
-	"strconv"
+	"reflect"
 	"time"
 
 	"github.com/go-resty/resty/v2"
-	pgt "github.com/nicoxiang/geektime-downloader/internal/pkg/geektime"
 	"github.com/nicoxiang/geektime-downloader/internal/pkg/logger"
 )
 
 const (
-	// ProductPath ...
-	ProductPath = "/serv/v3/learn/product"
-	// ArticlesPath ...
-	ArticlesPath = "/serv/v1/column/articles"
-	// ArticleV1Path ...
-	ArticleV1Path = "/serv/v1/article"
-	// ColumnInfoV3Path ...
-	ColumnInfoV3Path = "/serv/v3/column/info"
+	DefaultTimeout = 10 * time.Second
+	// Origin ...
+	Origin = "Origin"
+	// UserAgent ...
+	UserAgent = "User-Agent"
+	// DefaultUserAgent ...
+	DefaultUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36"
 )
 
-var (
-	geekTimeClient *resty.Client
-	accountClient  *resty.Client
-	// SiteCookies ...
-	SiteCookies []*http.Cookie
-)
+// A Client manages communication with the Geektime API.
+type Client struct {
+	RestyClient *resty.Client
+	Cookies     []*http.Cookie
+}
 
 // ErrGeekTimeAPIBadCode ...
 type ErrGeekTimeAPIBadCode struct {
-	Path string
-	Code int
-	Msg  string
+	Path           string
+	ResponseString string
 }
 
 // Error implements error interface
 func (e ErrGeekTimeAPIBadCode) Error() string {
-	return fmt.Sprintf("请求极客时间接口 %s 失败, code %d, msg %s", e.Path, e.Code, e.Msg)
+	return fmt.Sprintf("请求极客时间接口 %s 失败, ResponseBody: %s", e.Path, e.ResponseString)
 }
 
-// Product ...
-type Product struct {
-	Access   bool
-	ID       int
-	Title    string
-	Type     string
-	Articles []Article
-}
+var (
+	// ErrWrongPassword ...
+	ErrWrongPassword = errors.New("密码错误, 请尝试重新登录")
+	// ErrTooManyLoginAttemptTimes ...
+	ErrTooManyLoginAttemptTimes = errors.New("密码输入错误次数过多，已触发验证码校验，请稍后再试")
+	// ErrGeekTimeRateLimit ...
+	ErrGeekTimeRateLimit = errors.New("已触发限流, 你可以选择重新登录/重新获取 cookie, 或者稍后再试, 然后生成剩余的文章")
+	// ErrAuthFailed ...
+	ErrAuthFailed = errors.New("当前账户在其他设备登录或者登录已经过期, 请尝试重新登录")
+)
 
-// Article ...
-type Article struct {
-	AID   int
-	Title string
-}
-
-// VideoInfo ...
-type VideoInfo struct {
-	M3U8URL string
-	Size    int
-}
-
-// ArticleInfo ...
-type ArticleInfo struct {
-	ArticleContent   string
-	AudioDownloadURL string
-}
-
-// ColumnResponse ...
-type ColumnResponse struct {
-	Code int `json:"code"`
-	Data struct {
-		ArticleTitle     string `json:"article_title"`
-		ArticleContent   string `json:"article_content"`
-		AudioDownloadURL string `json:"audio_download_url"`
-	} `json:"data"`
-}
-
-// VideoResponse ...
-type VideoResponse struct {
-	Code int `json:"code"`
-	Data struct {
-		ArticleTitle string `json:"article_title"`
-		HLSVideos    struct {
-			SD struct {
-				Size int    `json:"size"`
-				URL  string `json:"url"`
-			} `json:"sd"`
-			HD struct {
-				Size int    `json:"size"`
-				URL  string `json:"url"`
-			} `json:"hd"`
-			LD struct {
-				Size int    `json:"size"`
-				URL  string `json:"url"`
-			} `json:"ld"`
-		} `json:"hls_videos"`
-	} `json:"data"`
-}
-
-// ArticleResponse type constraint, column and video response are different,
-// hls_videos field in video response is struct, but in column response its slice
-type ArticleResponse interface {
-	ColumnResponse | VideoResponse
-}
-
-// InitClient init golbal clients with cookies
-func InitClient(cookies []*http.Cookie) {
-	geekTimeClient = resty.New().
-		SetBaseURL(pgt.GeekBang).
-		SetCookies(cookies).
+// NewClient returns a new Geektime API client.
+func NewClient(cs []*http.Cookie) *Client {
+	restyClient := resty.New().
+		SetCookies(cs).
 		SetRetryCount(1).
-		SetTimeout(10*time.Second).
-		SetHeader(pgt.UserAgentHeaderName, pgt.UserAgentHeaderValue).
-		SetHeader(pgt.OriginHeaderName, pgt.GeekBang).
+		SetTimeout(DefaultTimeout).
+		SetHeader(UserAgent, DefaultUserAgent).
 		SetLogger(logger.DiscardLogger{})
 
-	accountClient = resty.New().
-		SetBaseURL(pgt.GeekBangAccount).
-		SetCookies(cookies).
-		SetTimeout(10*time.Second).
-		SetHeader(pgt.UserAgentHeaderName, pgt.UserAgentHeaderValue).
-		SetHeader(pgt.OriginHeaderName, pgt.GeekBang).
-		SetLogger(logger.DiscardLogger{})
-
-	SiteCookies = cookies
+	c := &Client{RestyClient: restyClient, Cookies: cs}
+	return c
 }
 
-// GetColumnInfo  ..
-func GetColumnInfo(productID int) (Product, error) {
-	var p Product
-	if err := Auth(); err != nil {
-		return p, err
+// newRequest new http request
+func (c *Client) newRequest(
+	method string,
+	baseURL string,
+	path string,
+	params map[string]string,
+	body interface{},
+	result interface{}) *resty.Request {
+	r := c.RestyClient.R()
+	r.Method = method
+	r.URL = baseURL + path
+	r.SetHeader(Origin, baseURL)
+	if len(params) > 0 {
+		r.SetQueryParams(params)
 	}
-	var result struct {
-		Code int `json:"code"`
-		Data struct {
-			ID    int    `json:"id"`
-			Type  string `json:"type"`
-			Title string `json:"title"`
-			Extra struct {
-				Sub struct {
-					AccessMask int `json:"access_mask"`
-				} `json:"sub"`
-			} `json:"extra"`
-		} `json:"data"`
+	if body != nil {
+		r.SetBody(body)
 	}
-	resp, err := geekTimeClient.R().
-		SetBody(
-			map[string]interface{}{
-				"product_id":             productID,
-				"with_recommend_article": true,
-			}).
-		SetResult(&result).
-		Post(ColumnInfoV3Path)
-
-	if err != nil {
-		return p, err
-	}
-
-	if resp.RawResponse.StatusCode == 451 {
-		return p, pgt.ErrGeekTimeRateLimit
-	}
-
-	if result.Code == 0 {
-		p = Product{
-			Access: result.Data.Extra.Sub.AccessMask > 0,
-			ID:     result.Data.ID,
-			Type:   result.Data.Type,
-			Title:  result.Data.Title,
-		}
-		return p, nil
-	}
-
-	return p, ErrGeekTimeAPIBadCode{ColumnInfoV3Path, result.Code, ""}
+	r.SetResult(result)
+	return r
 }
 
-// GetArticles call geektime api to get article list
-func GetArticles(cid string) ([]Article, error) {
-	if err := Auth(); err != nil {
-		return nil, err
-	}
-
-	var result struct {
-		Code int `json:"code"`
-		Data struct {
-			List []struct {
-				ID           int    `json:"id"`
-				ArticleTitle string `json:"article_title"`
-			} `json:"list"`
-		} `json:"data"`
-	}
-	resp, err := geekTimeClient.R().
-		SetBody(
-			map[string]interface{}{
-				"cid":    cid,
-				"order":  "earliest",
-				"prev":   0,
-				"sample": false,
-				"size":   500,
-			}).
-		SetResult(&result).
-		Post(ArticlesPath)
+// do perform http request
+func do(request *resty.Request) (*resty.Response, error) {
+	logger.Infof("Http request start, method: %s, url: %s, request body: %v",
+		request.Method,
+		request.URL,
+		request.Body,
+	)
+	resp, err := request.Execute(request.Method, request.URL)
 
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.RawResponse.StatusCode == 451 {
-		return nil, pgt.ErrGeekTimeRateLimit
-	}
+	statusCode := resp.RawResponse.StatusCode
 
-	if result.Code == 0 {
-		var articles []Article
-		for _, v := range result.Data.List {
-			articles = append(articles, Article{
-				AID:   v.ID,
-				Title: v.ArticleTitle,
-			})
+	logger.Infof("Http request end, method: %s, url: %s, status code: %d",
+		resp.RawResponse.Request.Method,
+		resp.RawResponse.Request.URL,
+		resp.RawResponse.StatusCode,
+	)
+
+	if statusCode != 200 {
+		logNotOkResponse(resp)
+		if statusCode == 451 {
+			return nil, ErrGeekTimeRateLimit
+		} else if statusCode == 452 {
+			return nil, ErrAuthFailed
 		}
-		return articles, nil
 	}
 
-	return nil, ErrGeekTimeAPIBadCode{ArticlesPath, result.Code, ""}
+	rv := reflect.ValueOf(request.Result)
+	f := reflect.Indirect(rv).FieldByName("Code")
+	code := int(f.Int())
+
+	if code == 0 {
+		return resp, nil
+	}
+
+	logNotOkResponse(resp)
+	//未登录或者已失效
+	if code == -3050 || code == -2000 {
+		return nil, ErrAuthFailed
+	}
+
+	return nil, ErrGeekTimeAPIBadCode{request.URL, resp.String()}
 }
 
-// GetColumnArticleInfo ...
-func GetColumnArticleInfo(articleID int) (ArticleInfo, error) {
-	var a ArticleInfo
-	ar, err := GetArticleResponse[ColumnResponse](articleID)
-	if err != nil {
-		return a, err
-	}
-	if ar.Code != 0 {
-		return a, ErrGeekTimeAPIBadCode{ArticleV1Path, ar.Code, ""}
-	}
-
-	return ArticleInfo{
-		ar.Data.ArticleContent,
-		ar.Data.AudioDownloadURL,
-	}, err
-}
-
-// GetVideoInfo ...
-func GetVideoInfo(articleID int, quality string) (VideoInfo, error) {
-	var v VideoInfo
-	a, err := GetArticleResponse[VideoResponse](articleID)
-	if err != nil {
-		return v, err
-	}
-	if a.Code != 0 {
-		return v, ErrGeekTimeAPIBadCode{ArticleV1Path, a.Code, ""}
-	}
-	if quality == "sd" {
-		v = VideoInfo{
-			M3U8URL: a.Data.HLSVideos.SD.URL,
-			Size:    a.Data.HLSVideos.SD.Size,
-		}
-	} else if quality == "hd" {
-		v = VideoInfo{
-			M3U8URL: a.Data.HLSVideos.HD.URL,
-			Size:    a.Data.HLSVideos.HD.Size,
-		}
-	} else if quality == "ld" {
-		v = VideoInfo{
-			M3U8URL: a.Data.HLSVideos.LD.URL,
-			Size:    a.Data.HLSVideos.LD.Size,
-		}
-	}
-	return v, nil
-}
-
-// GetArticleResponse get column or video response
-func GetArticleResponse[R ArticleResponse](articleID int) (R, error) {
-	var result R
-	if err := Auth(); err != nil {
-		return result, err
-	}
-
-	resp, err := geekTimeClient.R().
-		SetBody(
-			map[string]interface{}{
-				"id":                strconv.Itoa(articleID),
-				"include_neighbors": true,
-				"is_freelyread":     true,
-				"reverse":           false,
-			}).
-		SetResult(&result).
-		Post(ArticleV1Path)
-
-	if err != nil {
-		return result, err
-	}
-
-	if resp.RawResponse.StatusCode == 451 {
-		return result, pgt.ErrGeekTimeRateLimit
-	}
-
-	return result, nil
-}
-
-// Auth check if current user login is expired or login in another device
-func Auth() error {
-	var result struct {
-		Code int `json:"code"`
-	}
-	t := fmt.Sprintf("%v", time.Now().Round(time.Millisecond).UnixNano()/(int64(time.Millisecond)/int64(time.Nanosecond)))
-	resp, err := accountClient.R().
-		SetPathParam("t", t).
-		SetResult(&result).
-		Get("/serv/v1/user/auth")
-
-	if err != nil {
-		return err
-	}
-
-	if resp.StatusCode() == 200 {
-		if result.Code == 0 {
-			return nil
-		}
-		// result Code -1
-		// {\"error\":{\"msg\":\"未登录\",\"code\":-2000}
-		return pgt.ErrAuthFailed
-	}
-	// status code 452
-	return pgt.ErrAuthFailed
+func logNotOkResponse(resp *resty.Response) {
+	logger.Warnf("Http request not ok, response body: %s", resp.String())
 }

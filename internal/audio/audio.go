@@ -2,15 +2,13 @@ package audio
 
 import (
 	"context"
-	"errors"
 	"os"
 	"path/filepath"
-	"time"
 
-	"github.com/go-resty/resty/v2"
+	"github.com/nicoxiang/geektime-downloader/internal/geektime"
+	"github.com/nicoxiang/geektime-downloader/internal/pkg/downloader"
 	"github.com/nicoxiang/geektime-downloader/internal/pkg/filenamify"
-	pgt "github.com/nicoxiang/geektime-downloader/internal/pkg/geektime"
-	"github.com/nicoxiang/geektime-downloader/internal/pkg/logger"
+	"github.com/nicoxiang/geektime-downloader/internal/pkg/files"
 )
 
 const (
@@ -19,25 +17,27 @@ const (
 )
 
 // DownloadAudio ...
-func DownloadAudio(ctx context.Context, downloadAudioURL, dir, title string) error {
+func DownloadAudio(ctx context.Context, downloadAudioURL, dir, title string, overwrite bool) (bool, error) {
+	if downloadAudioURL == "" {
+		return false, nil
+	}
 	filenamifyTitle := filenamify.Filenamify(title)
-	c := resty.New()
-	c.SetOutputDirectory(dir).
-		SetRetryCount(1).
-		SetTimeout(time.Minute).
-		SetHeader(pgt.UserAgentHeaderName, pgt.UserAgentHeaderValue).
-		SetHeader(pgt.OriginHeaderName, pgt.GeekBang).
-		SetLogger(logger.DiscardLogger{})
 
-	_, err := c.R().
-		SetContext(ctx).
-		SetOutput(filenamifyTitle + MP3Extension).
-		Get(downloadAudioURL)
+	dst := filepath.Join(dir, filenamifyTitle+MP3Extension)
 
-	if errors.Is(err, context.Canceled) {
-		fullName := filepath.Join(dir, filenamifyTitle + MP3Extension)
-		_ = os.Remove(fullName)
+	if files.CheckFileExists(dst) && !overwrite {
+		return true, nil
 	}
 
-	return err
+	headers := make(map[string]string, 2)
+	headers[geektime.Origin] = geektime.DefaultBaseURL
+	headers[geektime.UserAgent] = geektime.DefaultUserAgent
+
+	_, err := downloader.DownloadFileConcurrently(ctx, dst, downloadAudioURL, headers, 1)
+
+	if err != nil {
+		_ = os.Remove(dst)
+	}
+
+	return false, err
 }
