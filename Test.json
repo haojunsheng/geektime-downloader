@@ -1,0 +1,1376 @@
+[{
+	"id": 100852601,
+	"title": "LLM自主智能体应用实战课",
+	"is_finish": false,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100845001,
+	"title": "AI重塑云原生应用开发实战",
+	"is_finish": false,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100017301,
+	"title": "数据结构与算法之美",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100020801,
+	"title": "MySQL实战45讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100002201,
+	"title": "左耳听风",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100006601,
+	"title": "从0开始学架构",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100007101,
+	"title": "趣谈网络协议",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100006701,
+	"title": "Java核心技术面试精讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100039001,
+	"title": "设计模式之美",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100021701,
+	"title": "数据分析实战45讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100015201,
+	"title": "深入剖析Kubernetes",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100026901,
+	"title": "Python核心技术与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100023201,
+	"title": "重学前端",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100020901,
+	"title": "Linux性能优化实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100010301,
+	"title": "深入拆解Java虚拟机",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100024701,
+	"title": "趣谈Linux操作系统",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100025201,
+	"title": "许式伟的架构课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100021201,
+	"title": "程序员的数学基础课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100056701,
+	"title": "Redis核心技术与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100006201,
+	"title": "技术领导力实战笔记",
+	"is_finish": true,
+	"update_frequency": "已完结"
+}, {
+	"id": 100013101,
+	"title": "Go语言核心36讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100029501,
+	"title": "SQL必知必会",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100023901,
+	"title": "Java并发编程实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100009601,
+	"title": "软件测试52讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100020201,
+	"title": "从0开始学大数据",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100026001,
+	"title": "深入浅出计算机组成原理",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100078401,
+	"title": "操作系统实战45讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100014301,
+	"title": "技术管理实战36讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100014401,
+	"title": "从0开始学微服务",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100029001,
+	"title": "透视HTTP协议",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100003101,
+	"title": "人工智能基础课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100028001,
+	"title": "Java性能调优实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100033601,
+	"title": "浏览器工作原理与实践",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100037301,
+	"title": "DDD实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100017501,
+	"title": "如何设计一个秒杀系统",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100038501,
+	"title": "雷蓓蓓的项目管理实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100022301,
+	"title": "10x程序员工作法",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100047701,
+	"title": "Java业务开发常见错误100例",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100029201,
+	"title": "Kafka核心技术与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100021101,
+	"title": "Android开发高手课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100032301,
+	"title": "消息队列高手课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100035801,
+	"title": "高并发系统设计40问",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100002401,
+	"title": "朱赟的技术管理课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100042501,
+	"title": "性能测试实战30讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100034101,
+	"title": "编译原理之美",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100046801,
+	"title": "后端存储实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100023701,
+	"title": "软件工程之美",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100032701,
+	"title": "网络编程实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100023401,
+	"title": "面试现场",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100064501,
+	"title": "大厂晋升指南",
+	"is_finish": true,
+	"update_frequency": "每周一／三／五更新"
+}, {
+	"id": 100005101,
+	"title": "推荐系统三十六式",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100006501,
+	"title": "硅谷产品实战36讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100024501,
+	"title": "iOS开发高手课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100031001,
+	"title": "Flutter核心技术与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100079601,
+	"title": "Go语言项目开发实战",
+	"is_finish": true,
+	"update_frequency": "每周二 / 四 / 六更新"
+}, {
+	"id": 100036501,
+	"title": "说透中台",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100025301,
+	"title": "大规模数据处理实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100005701,
+	"title": "深入浅出区块链",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100046201,
+	"title": "RPC实战与核心原理",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100009701,
+	"title": "持续交付36讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100036401,
+	"title": "分布式技术原理与算法解析",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100084801,
+	"title": "数据分析思维课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100094401,
+	"title": "玩转Vue3全家桶",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100012001,
+	"title": "邱岳的产品实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100027701,
+	"title": "深入拆解Tomcat&Jetty",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100019601,
+	"title": "代码精进之路",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100003401,
+	"title": "赵成的运维体系管理课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100040201,
+	"title": "后端技术面试38讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100036601,
+	"title": "DevOps实战笔记",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100099801,
+	"title": "郭东白的架构课",
+	"is_finish": true,
+	"update_frequency": "已完结"
+}, {
+	"id": 100007201,
+	"title": "从0开始学游戏开发",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100541001,
+	"title": "AI大模型之美",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100051201,
+	"title": "系统性能调优必知必会",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100001901,
+	"title": "技术与商业案例解读",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100008701,
+	"title": "机器学习40讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100051801,
+	"title": "罗剑锋的C++实战笔记",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100041701,
+	"title": "安全攻防技能30讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100040501,
+	"title": "现代C++编程实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100060801,
+	"title": "深度学习推荐系统实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100034501,
+	"title": "研发效率破局之道",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100002601,
+	"title": "邱岳的产品手记",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100002101,
+	"title": "AI技术内参",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100012101,
+	"title": "程序员进阶攻略",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100039701,
+	"title": "JavaScript核心原理解析",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100031801,
+	"title": "从0打造音视频直播系统",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100051901,
+	"title": "互联网人的英语私教课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100035501,
+	"title": "全栈工程师修炼指南",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100049101,
+	"title": "数据中台实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100045801,
+	"title": "接口测试入门课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100081501,
+	"title": "如何成为学习高手",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100053801,
+	"title": "跟月影学可视化",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100057401,
+	"title": "分布式数据库30讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100044301,
+	"title": "说透敏捷",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100069901,
+	"title": "etcd实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100048001,
+	"title": "图解GoogleV8",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100052801,
+	"title": "编译原理实战课",
+	"is_finish": true,
+	"update_frequency": "每周一／三／五更新"
+}, {
+	"id": 100061801,
+	"title": "Go并发编程实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100082101,
+	"title": "如何落地业务建模",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100066601,
+	"title": "成为AI产品经理",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100063801,
+	"title": "容器实战高手课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100041101,
+	"title": "性能工程高手课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100053301,
+	"title": "正则表达式入门课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100025001,
+	"title": "从0开始做增长",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100085301,
+	"title": "陈天·Rust编程第一课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100046901,
+	"title": "深入浅出云计算",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100062901,
+	"title": "乔新亮的CTO成长复盘",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100034901,
+	"title": "即时消息技术剖析与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100058001,
+	"title": "Linux内核技术实战课",
+	"is_finish": true,
+	"update_frequency": "每周二／四／六更新"
+}, {
+	"id": 100100901,
+	"title": "业务开发算法50讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100105701,
+	"title": "李智慧·高并发架构实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100104301,
+	"title": "网络排查案例课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100046101,
+	"title": "分布式协议与算法实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100090601,
+	"title": "手把手带你写一个Web框架",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100093501,
+	"title": "TonyBai·Go语言第一课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100043001,
+	"title": "摄影入门课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100071001,
+	"title": "Python自动化办公实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100311801,
+	"title": "手把手教你落地DDD",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100104701,
+	"title": "深入浅出分布式技术原理",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100055801,
+	"title": "Vim实用技巧必知必会",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100048401,
+	"title": "检索技术核心20讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100100701,
+	"title": "深入C语言和程序运行原理",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100058401,
+	"title": "技术管理案例课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100093001,
+	"title": "全链路压测实战30讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100114501,
+	"title": "Kubernetes入门实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100094901,
+	"title": "编程高手必学的内存知识",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100028301,
+	"title": "OpenResty从入门到实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100068401,
+	"title": "代码之丑",
+	"is_finish": true,
+	"update_frequency": "每周二／四／六更新"
+}, {
+	"id": 100020001,
+	"title": "白话法律42讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100085501,
+	"title": "零基础实战机器学习",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100117801,
+	"title": "计算机基础实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100052601,
+	"title": "软件设计之美",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100067701,
+	"title": "分布式金融架构课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100114001,
+	"title": "中间件核心技术与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100079101,
+	"title": "性能优化高手课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100090001,
+	"title": "零基础入门Spark",
+	"is_finish": true,
+	"update_frequency": " 每周一 / 三 / 五更新"
+}, {
+	"id": 100083301,
+	"title": "程序员的个人财富课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100050101,
+	"title": "Kafka核心源码解读",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100043901,
+	"title": "人人都能学会的编程入门课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100074001,
+	"title": "高楼的性能工程实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100110101,
+	"title": "ReactNative新架构实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100108401,
+	"title": "说透低代码",
+	"is_finish": false,
+	"update_frequency": "每年更新5讲"
+}, {
+	"id": 100046301,
+	"title": "架构实战案例解析",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100085101,
+	"title": "程序员的测试课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100037701,
+	"title": "苏杰的产品创新课",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 /五更新"
+}, {
+	"id": 100030701,
+	"title": "黄勇的OKR实战笔记",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100109401,
+	"title": "徐昊·TDD项目实战70讲",
+	"is_finish": true,
+	"update_frequency": "完结"
+}, {
+	"id": 100073201,
+	"title": "MySQL必知必会",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100084301,
+	"title": "Redis源码剖析与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100063601,
+	"title": "物联网开发实战",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100059201,
+	"title": "用户体验设计实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100050701,
+	"title": "视觉笔记入门课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100077001,
+	"title": "Spring编程常见错误50例",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100109201,
+	"title": "自动化测试高手课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100119601,
+	"title": "现代ReactWeb开发实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100070901,
+	"title": "跟着高手学复盘",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100050201,
+	"title": "Serverless入门课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100053901,
+	"title": "OAuth2.0实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100101301,
+	"title": "SpringCloud微服务项目实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100097301,
+	"title": "深入剖析Java新特性",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100124001,
+	"title": "Go进阶·分布式爬虫实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100120501,
+	"title": "技术领导力实战笔记2022",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新 "
+}, {
+	"id": 100122101,
+	"title": "JavaScript进阶实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100101501,
+	"title": "Web漏洞挖掘实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100064801,
+	"title": "实用密码学",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100091101,
+	"title": "大数据经典论文解读",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100095401,
+	"title": "超级访谈：对话张雪峰",
+	"is_finish": true,
+	"update_frequency": "每周三更新 5 讲"
+}, {
+	"id": 100048201,
+	"title": "SRE实战手册",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100062001,
+	"title": "人人都用得上的写作课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100309001,
+	"title": "高并发系统实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100091501,
+	"title": "手把手带你搭建秒杀系统",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100117601,
+	"title": "快手·移动端音视频开发实战",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100070001,
+	"title": "手把手教你玩音乐",
+	"is_finish": true,
+	"update_frequency": "每周二 / 四 / 六更新"
+}, {
+	"id": 100073301,
+	"title": "流程型组织15讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100119701,
+	"title": "Serverless进阶实战课",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100076501,
+	"title": "说透数字化转型",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100617601,
+	"title": "LangChain实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100093301,
+	"title": "PyTorch深度学习实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100069101,
+	"title": "体验设计案例课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100052201,
+	"title": "职场求生攻略",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100550701,
+	"title": "零基础GPT应用入门课",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100104501,
+	"title": "eBPF核心技术与实战",
+	"is_finish": false,
+	"update_frequency": "每年更新5讲"
+}, {
+	"id": 100062401,
+	"title": "手机摄影",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100079901,
+	"title": "ReactHooks核心原理与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100059901,
+	"title": "WebAssembly入门课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100122701,
+	"title": "超级访谈：对话毕玄",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100551601,
+	"title": "后端工程师的高阶面经",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100522501,
+	"title": "运维监控系统实战笔记",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100613101,
+	"title": "AI大模型系统实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100065501,
+	"title": "A/B测试从0到1",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100079201,
+	"title": "说透芯片",
+	"is_finish": true,
+	"update_frequency": "已完结"
+}, {
+	"id": 100060501,
+	"title": "动态规划面试宝典",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100073401,
+	"title": "Spark性能调优实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100056401,
+	"title": "重学线性代数",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100070801,
+	"title": "恋爱必修课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100637501,
+	"title": "程序员职业规划手册",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100031101,
+	"title": "编辑训练营",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100117701,
+	"title": "商业思维案例笔记",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100061401,
+	"title": "爱上跑步",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100075401,
+	"title": "技术面试官识人手册",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100113201,
+	"title": "人人都用得上的数字化思维课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100311101,
+	"title": "Vue3企业级项目实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100555001,
+	"title": "AI绘画核心技术与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100098901,
+	"title": "攻克视频技术",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100085201,
+	"title": "手把手带你写一门编程语言",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100119501,
+	"title": "Web3.0入局攻略",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100618301,
+	"title": "超级访谈：对话道哥",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100123701,
+	"title": "超级访谈：对话玉伯",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100115201,
+	"title": "大厂设计进阶实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100084201,
+	"title": "说透区块链",
+	"is_finish": true,
+	"update_frequency": " 全集"
+}, {
+	"id": 100552001,
+	"title": "深入拆解消息队列47讲",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100072001,
+	"title": "基于人因的用户体验设计课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100103401,
+	"title": "朱涛·Kotlin编程第一课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100312001,
+	"title": "云原生架构与GitOps实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100626901,
+	"title": "Rust语言从入门到实战",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100072201,
+	"title": "打造爆款短视频",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100536701,
+	"title": "手把手带你写一个MiniSpring",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100057701,
+	"title": "ToB市场品牌实战课",
+	"is_finish": true,
+	"update_frequency": "每周一／三／五更新"
+}, {
+	"id": 100082501,
+	"title": "讲好故事",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100056201,
+	"title": "如何看懂一幅画",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100109601,
+	"title": "超级访谈：对话汤峥嵘",
+	"is_finish": true,
+	"update_frequency": "每周三更新，每周更新不少于 3 讲"
+}, {
+	"id": 100770601,
+	"title": "AI大模型实战高手课",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100111101,
+	"title": "遗留系统现代化实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100112401,
+	"title": "说透元宇宙",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100078501,
+	"title": "容量保障核心技术与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100098801,
+	"title": "搞定音频技术",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100121701,
+	"title": "深入浅出可观测性",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100107801,
+	"title": "大厂广告产品心法",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100312101,
+	"title": "Dubbo源码剖析与实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100104601,
+	"title": "反爬虫兵法演绎20讲",
+	"is_finish": true,
+	"update_frequency": "已完结"
+}, {
+	"id": 100755401,
+	"title": "徐昊·AI时代的软件工程",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100117501,
+	"title": "快手·音视频技术入门课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100546501,
+	"title": "Python实战·从0到1搭建直播视频平台",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100542801,
+	"title": "手把手带你搭建推荐系统",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100523801,
+	"title": "现代C++20实战高手课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100613601,
+	"title": "云时代的JVM原理与实战",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100786301,
+	"title": "AI大模型项目落地实战",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100102601,
+	"title": "去无方向的信",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100524201,
+	"title": "快速上手C++数据结构与算法",
+	"is_finish": true,
+	"update_frequency": "已完结"
+}, {
+	"id": 100080901,
+	"title": "说透5G",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100112001,
+	"title": "林外·专利写作第一课",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100525001,
+	"title": "大型Android系统重构实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100764201,
+	"title": "大模型应用开发实战",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100755801,
+	"title": "工程师个人发展指南",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100839101,
+	"title": "程序员的AI开发第一课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100636608,
+	"title": "算法（第4版）",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100081901,
+	"title": "如何读懂一首诗",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100781001,
+	"title": "SRE实践：服务可靠性案例课",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100817901,
+	"title": "RAG系统实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100758001,
+	"title": "云原生基础架构实战课",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100636606,
+	"title": "学透Spring：从入门到项目实战",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100547601,
+	"title": "B端体验设计入门课",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100636401,
+	"title": "手把手带你写一个MiniTomcat",
+	"is_finish": true,
+	"update_frequency": "全集更新"
+}, {
+	"id": 100636604,
+	"title": "Rust程序设计（第2版）",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100772701,
+	"title": "分布式数据库从入门到实战",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100759401,
+	"title": "前端全链路优化实战课",
+	"is_finish": true,
+	"update_frequency": "全集更新"
+}, {
+	"id": 100804101,
+	"title": "RAG快速开发实战",
+	"is_finish": true,
+	"update_frequency": "每周一/三/五更新"
+}, {
+	"id": 100819801,
+	"title": "成为AGI产品经理",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100761401,
+	"title": "手写Python虚拟机",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100828301,
+	"title": "LLaMA3前沿模型实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100825201,
+	"title": "前端工程师的AI实战课",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100799401,
+	"title": "MySQL运维实战课",
+	"is_finish": true,
+	"update_frequency": "每周一 / 三 / 五更新"
+}, {
+	"id": 100818701,
+	"title": "Rust实战·手写下一代云原生消息队列",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100780501,
+	"title": "零基础拿下云原生CKA认证",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100636612,
+	"title": "分布式架构原理与实践",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100804701,
+	"title": "LLM&RAG快速应用小册",
+	"is_finish": true,
+	"update_frequency": "全集"
+}, {
+	"id": 100636611,
+	"title": "跟阿铭学Linux",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100843701,
+	"title": "Go服务开发高手课",
+	"is_finish": false,
+	"update_frequency": "每周一 / 三  / 五更新"
+}, {
+	"id": 100636605,
+	"title": "Python工匠：案例、技巧与工程实践",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100636610,
+	"title": "黑客与画家",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100636601,
+	"title": "ChatGPT：人类新纪元",
+	"is_finish": false,
+	"update_frequency": "10"
+}, {
+	"id": 100636607,
+	"title": "详解HTTP：协议基础与Go语言实现",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100636603,
+	"title": "Vue.js设计与实现",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100636602,
+	"title": "这就是ChatGPT",
+	"is_finish": false,
+	"update_frequency": "11"
+}, {
+	"id": 100636609,
+	"title": "软件设计：从专业到卓越",
+	"is_finish": true,
+	"update_frequency": "全集上线"
+}, {
+	"id": 100785001,
+	"title": "中国人工智能成熟度模型报告",
+	"is_finish": true,
+	"update_frequency": "3"
+}]
